@@ -4,43 +4,31 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-    [SerializeField] Transform _player;
-    [SerializeField] Vector3 _offset;
-    [SerializeField] Vector3 _rotateMaxLimits;
-    [SerializeField] Vector3 _rotateMinLimits;
-    [SerializeField] float _mouseSensitivity;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] Transform player;
+
+    public float sensitivity = 1;
+    float mouseX;
+    float mouseY;
+
+    private void Start()
     {
-        
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void FollowPlayer()
+    void ControlCamera()
     {
-        transform.position = _player.transform.position - _offset;
-    }
+        mouseX += Input.GetAxis("Mouse X") * sensitivity;
+        mouseY += Input.GetAxis("Mouse Y") * sensitivity;
+        mouseY = Mathf.Clamp(mouseY, -35, 60);
 
-    void LookAround()
-    {
-        float _verticalAxys = Input.GetAxis("Mouse Y");
-        float _horizontalAxys = Input.GetAxis("Mouse X");
-        transform.RotateAround(_player.position, Vector3.up, _horizontalAxys * _mouseSensitivity);
-        transform.RotateAround(Vector3.zero, transform.right, _verticalAxys * _mouseSensitivity);
-        RotateLimits();
-    }
-
-    void RotateLimits()
-    {
-        if (transform.localEulerAngles.x > _rotateMaxLimits.x)
-        {
-            transform.localEulerAngles = new Vector3(_rotateMaxLimits.x, transform.localEulerAngles.y, transform.localEulerAngles.z);
-        }
+        player.rotation = Quaternion.Euler(0, mouseX, 0);
+        transform.rotation = Quaternion.Euler(-mouseY, mouseX, 0);
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        FollowPlayer();
-        //LookAround();
+        ControlCamera();
     }
 }
