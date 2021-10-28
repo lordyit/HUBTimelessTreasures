@@ -3,7 +3,7 @@
 
 void MainLight_half(float3 WorldPos, out half3 Direction, out half3 Color, out half DistanceAtten, out half ShadowAtten)
 {
-#if SHADERGRAPH_PREVIEW
+#if defined(SHADERGRAPH_PREVIEW)
    Direction = half3(0.5, 0.5, 0);
    Color = 1;
    DistanceAtten = 1;

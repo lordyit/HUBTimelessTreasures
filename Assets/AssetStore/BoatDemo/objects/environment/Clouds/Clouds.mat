@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Clouds
-  m_Shader: {fileID: -6465566751694194690, guid: 0b74f0b1b09e147efb2d08ef50ff0a6c, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 346e354b46bf05d4c931b3b5f2187e74, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
@@ -37,6 +37,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_DC5D1BF4:
+        m_Texture: {fileID: 2800000, guid: 92def56179142402288965548a00e532, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_cf9a581e5d2840599f110f0b7568b37f:
         m_Texture: {fileID: 2800000, guid: 92def56179142402288965548a00e532, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -89,6 +93,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_758faad249fb4e1ca3b396707945c3e8: 0.1
+    - Vector1_7973205fd01e468b8b0f10f9d539df6f: 32
+    - Vector1_7b754460e1184682aa4d52029461db36: 1
+    - Vector1_febe689be0aa473ba2872196b4470d8f: 0.7
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -111,6 +119,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_0d1749afe43048de85222da4cb4c3821: {r: 0.735849, g: 0.735849, b: 0.735849, a: 0}
+    - Color_c2ec11ef4dad44eba2c5a876bb730617: {r: 8, g: 8, b: 8, a: 0}
+    - Color_d6f47cb7a1bb4d7e8d8fa79395593819: {r: 1, g: 1, b: 1, a: 0}
+    - Color_daaafe25e3ef43d9a769c7da2a60e188: {r: 1, g: 1, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

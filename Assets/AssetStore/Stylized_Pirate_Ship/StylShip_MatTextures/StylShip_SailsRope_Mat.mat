@@ -21,10 +21,10 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: StylShip_SailsRope_Mat
-  m_Shader: {fileID: -6465566751694194690, guid: 346e354b46bf05d4c931b3b5f2187e74, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 2d9bbd856147fba49a3db8f6b71169e5, type: 3}
   m_ShaderKeywords: _ALPHATEST_ON _EMISSION _METALLICSPECGLOSSMAP _NORMALMAP _OCCLUSIONMAP
   m_LightmapFlags: 2
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -93,9 +93,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_758faad249fb4e1ca3b396707945c3e8: 0.44
+    - Vector1_758faad249fb4e1ca3b396707945c3e8: 0
     - Vector1_7973205fd01e468b8b0f10f9d539df6f: 32
-    - Vector1_febe689be0aa473ba2872196b4470d8f: 0.82
+    - Vector1_7b754460e1184682aa4d52029461db36: 0
+    - Vector1_febe689be0aa473ba2872196b4470d8f: 0
     - _AlphaClip: 1
     - _Blend: 0
     - _BumpScale: 1
