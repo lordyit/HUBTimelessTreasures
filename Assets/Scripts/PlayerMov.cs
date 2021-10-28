@@ -10,6 +10,8 @@ public class PlayerMov : MonoBehaviour
     [SerializeField] CharacterController cc;
     [SerializeField] CutManager cutManager;
     [SerializeField] PlayerStatus playerStatus;
+    [SerializeField] GameObject bestiary;
+    [SerializeField] GameObject textBestiary;
     [SerializeField] float movSpdWalk;
     [SerializeField] float movSpdRun;
     [SerializeField] float rotateSpd;
@@ -17,11 +19,12 @@ public class PlayerMov : MonoBehaviour
     public GameObject volume;
     public GameObject past;
 
-
     float _horinzontalAxys;
     float _verticalAxys;
     float gravity = 9.8f;
     float gravityForce;
+
+    bool canUseBestiary = false;
 
     readonly string animKey = "anim";
 
@@ -29,6 +32,7 @@ public class PlayerMov : MonoBehaviour
     {
         if (other.CompareTag("creature"))
         {
+            cutManager.playableDirectorCriatura.stopped += AllowBestiaryUse;
             cutManager.ChamarCenaCriatura();
             other.gameObject.SetActive(false);
             GameManager.Instance.dragonVFX.SetActive(false);
@@ -181,11 +185,31 @@ public class PlayerMov : MonoBehaviour
         }
     }
 
+    void AllowBestiaryUse(UnityEngine.Playables.PlayableDirector playableDirector)
+    {
+        canUseBestiary = true;
+        textBestiary.SetActive(true);
+
+        playableDirector.stopped -= AllowBestiaryUse;
+    }
+
+    void OpenCloseBestiary()
+    {
+        if (!canUseBestiary) return;
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            if (textBestiary.activeInHierarchy) textBestiary.SetActive(false);
+            bestiary.SetActive(!bestiary.activeInHierarchy);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
         PauseGame();
         AnimatorController();
+        OpenCloseBestiary();
         if (GameManager.Instance.podeMexer)
         {
             GetAxys();
