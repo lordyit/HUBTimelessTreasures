@@ -7,6 +7,8 @@ TagManager:
   - creature
   - chest
   - time
+  - lb_perchTarget
+  - lb_groundTarget
   layers:
   - Default
   - TransparentFX
@@ -14,7 +16,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - colliders
   - 
   - 
   - 
