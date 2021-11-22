@@ -9,6 +9,9 @@ TagManager:
   - time
   - lb_perchTarget
   - lb_groundTarget
+  - Sand
+  - Wood
+  - Stone
   layers:
   - Default
   - TransparentFX
@@ -17,7 +20,7 @@ TagManager:
   - Water
   - UI
   - colliders
-  - 
+  - Ground
   - 
   - 
   - 
