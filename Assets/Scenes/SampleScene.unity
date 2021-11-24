@@ -3830,7 +3830,7 @@ PrefabInstance:
     - target: {fileID: -6761573003611345578, guid: 3fd89ea3935080049a960422b7156c71, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: fab9876c2fd89804ca287c474c21a2c0, type: 2}
+      objectReference: {fileID: 2100000, guid: 48f0e5ffd8a27af46bfc5e23888efaca, type: 2}
     - target: {fileID: 919132149155446097, guid: 3fd89ea3935080049a960422b7156c71, type: 3}
       propertyPath: m_Name
       value: Daniela
@@ -3838,7 +3838,7 @@ PrefabInstance:
     - target: {fileID: 1238948109257004920, guid: 3fd89ea3935080049a960422b7156c71, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: fab9876c2fd89804ca287c474c21a2c0, type: 2}
+      objectReference: {fileID: 2100000, guid: a4957c0e75f6ce841b189be97d25d606, type: 2}
     - target: {fileID: 5866666021909216657, guid: 3fd89ea3935080049a960422b7156c71, type: 3}
       propertyPath: m_Enabled
       value: 0
