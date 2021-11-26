@@ -18,6 +18,14 @@ public class CutManager : MonoBehaviour
     public GameObject navioNovo;
     public GameObject uiPoderTempo;
 
+    private static CutManager instance;
+    public static CutManager Instance => instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     public void ChamarCenaCriatura()
     {
         playableDirectorCriatura.Play();
@@ -37,5 +45,11 @@ public class CutManager : MonoBehaviour
         navioVelho.SetActive(false);
         navioNovo.SetActive(true);
         GameManager.Instance.fimDeJogoPanel.SetActive(true);
+    }
+
+    public void MexerNovamente()
+    {
+        GameManager.Instance.podeMexer = true;
+        GameManager.Instance.chestOpen = false;
     }
 }

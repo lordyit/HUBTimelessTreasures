@@ -21,8 +21,9 @@ public class PlayerMov : MonoBehaviour
 
     float _horinzontalAxys;
     float _verticalAxys;
-    float gravity = 9.8f;
+    float gravity = 20f;
     float gravityForce;
+    float _turnSmoothTime;
 
     bool canUseBestiary = false;
 
@@ -39,10 +40,12 @@ public class PlayerMov : MonoBehaviour
         }
         if (other.CompareTag("chest"))
         {
-            cutManager.AbrirBau();
             other.enabled = false;
             GameManager.Instance.bauVFX.SetActive(false);
             GameManager.Instance.navioVFX.SetActive(true);
+            animator.SetTrigger("chest");
+            GameManager.Instance.podeMexer = false;
+            GameManager.Instance.chestOpen = true;
         }
         if (other.CompareTag("time") && playerStatus.poderTempo)
         {
@@ -147,13 +150,30 @@ public class PlayerMov : MonoBehaviour
         }
     }
 
-    void TravelTime()
+    void NewMove()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        Vector3 _direction = new Vector3(_horinzontalAxys, 0f, _verticalAxys).normalized;
+        float _turnSmooth = 0.15f;
+
+        if (_direction.magnitude >= 0.1f)
         {
-            volume.SetActive(!volume.activeInHierarchy);
-            past.SetActive(!volume.activeInHierarchy);
-            animator.SetInteger(animKey, 3);
+            float _targetAngle = Mathf.Atan2(_direction.x, _direction.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
+            float _angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetAngle, ref _turnSmoothTime, _turnSmooth);
+
+            transform.rotation = Quaternion.Euler(0f, _angle, 0f);
+
+            Vector3 _moveDir = Quaternion.Euler(0f, _targetAngle, 0f) * Vector3.forward;
+            _moveDir.y = gravityForce;
+
+            if (!IsRunning())
+            {
+                cc.Move(_moveDir.normalized * movSpdWalk * Time.deltaTime);
+            }
+            else
+            {
+                cc.Move(_moveDir.normalized * movSpdRun * Time.deltaTime);
+            }
+            
         }
     }
 
@@ -204,20 +224,35 @@ public class PlayerMov : MonoBehaviour
         }
     }
 
+    void OpeningChest()
+    {
+        if (GameManager.Instance.chestOpen)
+        {
+            Vector3 direction = GameManager.Instance.chest.transform.position - transform.position;
+            Quaternion toRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 10 * Time.time);
+
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(-89.075f, transform.position.y, -95.285f), 5 * Time.deltaTime);
+        }
+            
+    }
+
     // Update is called once per frame
     void Update()
     {
         PauseGame();
         AnimatorController();
         OpenCloseBestiary();
+        OpeningChest();
         if (GameManager.Instance.podeMexer)
         {
             GetAxys();
-            MoveTwo();
+            NewMove();
             Gravidade();
         }
         else
         {
+            if (!GameManager.Instance.chestOpen)
             cc.Move(new Vector3(0, 0, 0));
             _horinzontalAxys = 0;
             _verticalAxys = 0;

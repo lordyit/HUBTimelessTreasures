@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance => instance;
 
     public bool podeMexer;
+    public bool chestOpen;
 
     public Text textoGuia;
 
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject dragonVFX;
     public GameObject bauVFX;
     public GameObject navioVFX;
+    public GameObject chest;
 
     private void Awake()
     {
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         podeMexer = true;
+        chestOpen = false;
     }
 
     private void Update()
