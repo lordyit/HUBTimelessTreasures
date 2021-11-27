@@ -11,6 +11,12 @@ public class MenuManager : MonoBehaviour
         controlesPanel.SetActive(abrir);
     }
 
+    private void Start()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
     public void Sair()
     {
         Application.Quit();

@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
     public GameObject bauVFX;
     public GameObject navioVFX;
     public GameObject chest;
+    public GameObject timeDevice;
+
+    public Animator navioAnim;
+    public Animator player;
 
     private void Awake()
     {

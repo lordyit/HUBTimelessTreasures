@@ -50,7 +50,7 @@ public class PlayerMov : MonoBehaviour
         if (other.CompareTag("time") && playerStatus.poderTempo)
         {
             cutManager.uiPoderTempo.SetActive(true);
-            GameManager.Instance.textoGuia.text = "Ativar relíquia: Ctrl esquedo";
+            GameManager.Instance.textoGuia.text = "Ativar relíquia: Ctrl esquerdo";
         }
         
     }
@@ -61,7 +61,7 @@ public class PlayerMov : MonoBehaviour
         {
             animator.SetInteger(animKey, 3);
             GameManager.Instance.podeMexer = false;
-            GameManager.Instance.navioVFX.SetActive(false);
+            GameManager.Instance.navioAnim.enabled = true;
         }
     }
 
@@ -71,7 +71,6 @@ public class PlayerMov : MonoBehaviour
         {
             cutManager.uiPoderTempo.SetActive(false);
             GameManager.Instance.textoGuia.text = "Volte ao navio!";
-
         }
     }
 

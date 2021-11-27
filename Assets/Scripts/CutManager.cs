@@ -45,11 +45,22 @@ public class CutManager : MonoBehaviour
         navioVelho.SetActive(false);
         navioNovo.SetActive(true);
         GameManager.Instance.fimDeJogoPanel.SetActive(true);
+        GameManager.Instance.player.SetInteger("anim", 0);
     }
 
     public void MexerNovamente()
     {
         GameManager.Instance.podeMexer = true;
         GameManager.Instance.chestOpen = false;
+    }
+
+    public void AnimTimeDevice()
+    {
+        GameManager.Instance.timeDevice.SetActive(true);
+    }
+
+    public void AnimTimeDeviceOff()
+    {
+        GameManager.Instance.timeDevice.SetActive(false);
     }
 }
